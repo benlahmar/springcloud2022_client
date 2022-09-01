@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Role {
@@ -15,7 +18,8 @@ public class Role {
 	@GeneratedValue
 	long id;
 	String libelle,description;
-	@ManyToMany
+	@JsonBackReference
+	@ManyToMany(fetch = FetchType.EAGER)
 	List<Compte> comptes=new ArrayList<>();
 	/**
 	 * @return the id

@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * @author moi
  *
@@ -29,6 +31,7 @@ public class Compte {
 	String username;
 	String password;
 	
+	@JsonManagedReference
 	@ManyToMany(fetch = FetchType.EAGER,mappedBy = "comptes")
 	List<Role> roles=new ArrayList<>();
 	
